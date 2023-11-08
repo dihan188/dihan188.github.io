@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three-cyut</title>
+    <title>Three-Room</title>
     <style>
     * {
         box-sizing: border-box;
@@ -37,10 +37,10 @@
     const scene = new THREE.Scene();
     const color = new THREE.Color('gray');
     scene.background = color;    
-    const light = new THREE.AmbientLight( 0x404040,30 );
+    const light = new THREE.AmbientLight( 0x404040,70 );
     scene.add( light );
     const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
-    camera.position.set(0, 2, 2);
+    camera.position.set(40, 10, 40);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
@@ -50,7 +50,7 @@
     dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
     loader.setDRACOLoader( dracoLoader );
     loader.load(
-        './models/CYUT.glb',
+        './models/Car.glb',
         function ( gltf ) {
             scene.add(gltf.scene);
         },

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="my-3">
+                <button type="button" class="btn btn-outline-danger rounded-pill" @click="status = !status">
+                    <span v-if="status">清晰</span>
+                    <span v-else>模糊</span>
+                </button>
+            </div>
+            <div class="row">
+                <div v-for="item in data" class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="position-absolute" style="right: 20px;top:20px">
+                            <button type="button" class="btn btn-outline-danger rounded-pill"
+                                @click="item.favorite = !item.favorite">
+                                <i v-if="!item.favorite" class="bi bi-heart"></i>
+                                <i v-else class="bi bi-heart-fill"></i>
+
+                            </button>
+
+                        </div>
+                        <img v-if="status" :src="item.picture.large" alt="">
+                        <img v-else :src="item.picture.medium" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{item.name.title}}. {{item.name.first}},{{item.name.last}}
+                            </h5>
+                            <p class="card-text">
+                                <b>Country:</b> {{item.location.country}}
+                            </p>
+                            <div v-if=" item.gender === 'male'">
+                                男👦:<i class="bi bi-gender-male"></i>
+                            </div>
+                            <div v-else=" item.gender === 'female'">
+                                女👧:<i class="bi bi-gender-female"></i>
+                            </div>
+                            <br>
+                            <p class="card-text">
+                                Birth:{{shortdob(item.dob.date)}}
+                            </p>
+                            <p class="card-text">
+                                Age:{{item.dob.age}}
+                            </p>
+                            <p class="card-text">
+                                Email:<a :href=`mailto:${item.email}`>{{item.email}}</a>
+                            </p>
+                            <p class="card-text">
+                                Phone:<a :href=`tel:${item.phone}`>{{item.phone}}</a>
+                            </p>
+                            <p class="card-text">
+                                State:{{item.location.state}}
+                            </p>
+                            <p class="card-text">
+                                Address: <a
+                                    :href=`https://www.google.com.tw/maps/search/${item.location.street.number},${item.location.street.name},${item.location.city},${item.location.state},${item.location.country}`>{{item.location.street.number}},{{item.location.street.name}},{{item.location.city}},{{item.location.state}},{{item.location.country}}
+                                    {{item.location.postcode}}</a>
+
+                                <iframe
+                                    :src=`https://www.google.com/maps/?q=${item.location.coordinates.latitude},${item.location.coordinates.longitude}&output=embed&z=1`
+                                    width="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js';
+        const app = createApp({
+            data() {
+                return {
+                    status: true,
+                    data:[]
+                    
+                }
+            },
+            methods: {
+
+                fetch_data(){
+                    let url = 'https://randomuser.me/api/?results=10';
+                    fetch(url)
+                    .then(function (response) {
+                        return response.json();
+                    }).then((dataGet)=>{
+                        this.data = dataGet.results;
+                        console.log(dataGet.results);
+                    })                
+                },
+                shortdob(birth) {
+                    return birth.substr(0, 10)
+                },
+
+            },
+            
+            mounted(){
+                this.fetch_data()
+                
+            }
+
+        }).mount('#app');
+
+
+    </script>
+
+</body>
+
+</html>

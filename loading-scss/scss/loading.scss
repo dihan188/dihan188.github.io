@@ -1,0 +1,142 @@
+@keyframes right {
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes bottom {
+
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes left {
+
+    50%,
+    100% {
+        right: 100%;
+    }
+}
+
+@keyframes top {
+
+    50%,
+    100% {
+        bottom: 100%;
+    }
+}
+
+@keyframes loading {
+    100% {
+        width: 142px;
+    }
+}
+@keyframes turnbox {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box {
+        width: 300px;
+        height: 300px;
+        background-color: #eee;
+        position: relative;
+        overflow: hidden;
+
+        .line-1 {
+            background: linear-gradient(to right, transparent, orange 100%);
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            left: -100%;
+            animation: right 2s linear 0s infinite;
+        }
+
+        .line-2 {
+            background: linear-gradient(to bottom, transparent, orange 100%);
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: -100%;
+            animation: bottom 2s linear 0.5s infinite;
+
+        }
+
+        .line-3 {
+            background: linear-gradient(to left, transparent, orange 100%);
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            bottom: 0;
+            right: -100%;
+            animation: left 2s linear 1s infinite;
+
+        }
+
+        .line-4 {
+            background: linear-gradient(to top, transparent, orange 100%);
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            bottom: -100%;
+            animation: top 2s linear 1.5s infinite;
+
+        }
+        
+        h1 {
+            // h1標籤本身有margin 要消除
+            margin: 0;
+            width: 0;
+            border-right: 2px solid black;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: loading 2s linear 2s infinite alternate;
+        }
+        // &代表父層 =>&::before
+        &:hover {
+            box-shadow: 0 0 600px 15px white;
+            .line-1{
+                background: linear-gradient(to right ,transparent,black 100%);
+            }
+            .line-2{
+                background: linear-gradient(to bottom ,transparent,black 100%);
+            }
+            .line-3{
+                background: linear-gradient(to top ,transparent,black 100%);
+            }
+            .line-4{
+                background: linear-gradient(to top ,transparent,black 100%);
+            }
+        }
+        &:hover{
+            animation: turnbox 0.5s linear 0s infinite;
+        }
+    }
+}

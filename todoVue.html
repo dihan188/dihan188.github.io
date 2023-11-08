@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" class="new-text" v-model="newText">
+        <button class="add" @click="addItem">增加文字</button>
+        <ul>
+            <li v-for="item in textArray" :key="item.id">
+                {{ item.text }}
+                <button @click="editItem(item)">編輯項目</button>
+                <button @click="deleteFinish(item)">刪除項目</button>
+            </li>
+        </ul>
+        <hr>
+        <input type="text" class="last-text" v-model="temp.text">
+        <button class="editOk" @click="editFinish">編輯完成</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    newText: '',
+                    textArray: [],
+                    temp: {},
+                    idAll: 0,
+                }
+            },
+
+            methods: {
+                addItem() {
+                    this.idAll++;
+                    let tempItem = {
+                        id: this.idAll,
+                        text: this.newText,
+                    }
+                    this.textArray.push(tempItem);
+                    newText = '';
+                },
+                editItem(item) {
+                    this.temp = { ...item };
+
+                },
+                editFinish() {
+                    const index = this.textArray.findIndex(obj => obj.id === this.temp.id);
+                    this.textArray[index] = this.temp;
+                    this.temp = {};
+                },
+                deleteFinish(item) {
+                    const index = this.textArray.findIndex(obj => obj.id === item.id);
+                    this.textArray.splice(index, 1);
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+    </script>
+</body>
+
+</html>
