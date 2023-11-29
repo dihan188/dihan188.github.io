@@ -63,7 +63,7 @@
     const light = new THREE.AmbientLight( 0x404040,30 );
     scene.add( light );
     const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
-    camera.position.set(-2, 0, 2);
+    camera.position.set(-1.5, 0, 4);
     // 渲染
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -85,6 +85,22 @@
         function ( gltf ) {
             console.log(gltf.scene);
             scene.add(gltf.scene);
+            // 8th
+            const floorgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const floortexture = new THREE.TextureLoader().load('./img/8th.png');
+            const floormaterial = new THREE.MeshStandardMaterial( { map: floortexture } );
+            const floor = new THREE.Mesh( floorgeometry, floormaterial );
+            gltf.scene.children[3].add(floor);
+            floor.position.set(0,0,0);
+            // 8th標籤
+            const floorDIV = document.createElement('a');
+            floorDIV.href = 'https://112-07-nchu-blender3d.dev-hub.io/index.html';
+            floorDIV.className = 'label';
+            floorDIV.textContent = '中興大學八樓導覽';
+            const floorLabel = new CSS2DObject(floorDIV);
+            floorLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[3].add(floorLabel);
+            floorDIV.style.pointerEvents = 'auto';
             // threejs
             const threejsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
             const threejstexture = new THREE.TextureLoader().load('./img/three.png');
