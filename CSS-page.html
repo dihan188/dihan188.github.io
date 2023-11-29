@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-size: 36px;
+        }
+        html,
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        a:visited {
+            color: inherit;
+        }
+        img{
+            width: 80%;
+            height: 80%;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .content{
+            background-color: rgb(133, 196, 196);
+            margin-bottom: 10px;
+        }
+        .name{
+            font-size: 48px;
+            text-align: center;
+        }
+        .cardAll{
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            width:800px;
+            height: 800px;
+            border-radius: 20px;
+            border: 3px solid rgb(77, 85, 74);
+            margin: 5px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn{
+            width: 250px;
+            height: 100%;
+            color: #ffffff;
+            font-size: 36px ;
+            text-align: center;
+            border-radius:10px;
+            border: 3px solid white;
+            background-color: rgb(167, 92, 104);
+        }
+        .btn:hover{
+            color: #1d1616;
+            background-color: rgb(159, 130, 135);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="name">CSS/RWD</div>
+            <div class="cardAll">
+                <div class="card">
+                    <img src="./img/Pac-man.png" alt="">
+                    <a href="Pac-Man.html">
+                        <li class="btn">Pac-Man</li>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="./img/microsoft.png" alt="">
+                    <a href="./microsoft-scss/microsoft.html">
+                        <li class="btn">Microsoft仿切</li>
+                    </a>
+                </div>
+                <div class="card">
+                    <img src="./img/Loading.png" alt="">
+                    <a href="./loading-scss/loading.html">
+                        <li class="btn">Loading</li>
+                    </a>
+                </div>
+
+            </div>     
+        </div>
+    </div>
+    
+</body>
+</html>

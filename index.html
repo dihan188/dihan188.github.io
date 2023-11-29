@@ -3,170 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Three-cyut</title>
     <style>
-        *{
-            box-sizing: border-box;
-            font-size: 36px;
-        }
-        html,
-        body{
-            /* display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap; */
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        li {
+    * {
+        box-sizing: border-box;
+    }   
+    body {
+    margin: 0px;
+    padding: 0px;
+    }
+    li {
             list-style: none;
-        }
-        a {
-            text-decoration: none;
-            color: #ffffff;
-        }
+    }
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .label {
+	padding: 5px;
+	font-size: 36px;
+	background-color: #608cb178;
+	border: 2px solid #F9DC5C;
+	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	cursor: pointer;
+    }
 
-        a:visited {
-            color: inherit;
-        }
-        img{
-            width: 80%;
-            height: 80%;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-        .content{
-            background-color: rgb(102, 117, 117);
-            margin-bottom: 10px;
-        }
-        .name{
-            font-size: 48px;
-            text-align: center;
-        }
-        .cardAll{
-            width: 100%;
-            height: 50%;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .card{
-            width:300px;
-            height: 300px;
-            border-radius: 20px;
-            border: 3px solid rgb(85, 74, 74);
-            margin: 5px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .btn{
-            width: 300px;
-            height: 100%;
-            color: #ffffff;
-            font-size: 36px ;
-            text-align: center;
-            border-radius:10px;
-            border: 3px solid white;
-            background-color: rgb(167, 92, 104);
-        }
-        .btn:hover{
-            color: #1d1616;
-            background-color: rgb(159, 130, 135);
-        }
-
+    .label:hover {
+        background-color: #F9DC5C;
+        border: 2px solid rgb(255, 255, 255);
+        color: #608cb178;
+    }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="name">Three.js and Blender</div>
-            <div class="cardAll">
-                <div class="card">
-                    <img src="./img/CYUT.png" alt="">
-                    <a href="Three-CYUT.html">
-                        <li class="btn">中興大學</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/Room.png" alt="">
-                    <a href="Three-Room.html">
-                        <li class="btn">房間</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/Kinopio.png" alt="">
-                    <a href="Three-Kinopio.html">
-                        <li class="btn">奇諾比奧</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/Car.png" alt="">
-                    <a href="Three-Car.html">
-                        <li class="btn">車子</li>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="name">JavaScript</div>
-            <div class="cardAll">
-                <div class="card">
-                    <img src="./img/colorgame.png" alt="">
-                    <a href="colorgame.html">
-                        <li class="btn">色弱遊戲</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/weather.png" alt="">
-                    <a href="weather-bs-vue2.html">
-                        <li class="btn">天氣小卡</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/BMI.png" alt="">
-                    <a href="BMI.html">
-                        <li class="btn">BMI</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/peoplecard.png" alt="">
-                    <a href="peoplecard.html">
-                        <li class="btn">隨機卡</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/todoVue.png" alt="">
-                    <a href="todoVue.html">
-                        <li class="btn">To-do-List</li>
-                    </a>
-                </div>
-            </div>     
-        </div>
-        <div class="content">
-            <div class="name">CSS/RWD</div>
-            <div class="cardAll">
-                <div class="card">
-                    <img src="./img/Pac-man.png" alt="">
-                    <a href="Pac-Man.html">
-                        <li class="btn">Pac-Man</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/microsoft.png" alt="">
-                    <a href="./microsoft-scss/microsoft.html">
-                        <li class="btn">Microsoft仿切</li>
-                    </a>
-                </div>
-                <div class="card">
-                    <img src="./img/Loading.png" alt="">
-                    <a href="./loading-scss/loading.html">
-                        <li class="btn">Loading</li>
-                    </a>
-                </div>
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
-            </div>     
-        </div>
-    </div>
-    
+    <script type="importmap">
+        {
+        "imports": {
+        "three": "https://unpkg.com/three@latest/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@latest/examples/jsm/"
+        }
+        }
+    </script>
+
+    <script script type="module">
+
+    // 引入three.js
+    import * as THREE from 'three';
+    // 引入three.js附加功能
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+    import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+    const scene = new THREE.Scene();
+    const color = new THREE.Color('gray');
+    scene.background = color;    
+    const light = new THREE.AmbientLight( 0x404040,30 );
+    scene.add( light );
+    const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+    camera.position.set(-2, 0, 2);
+    // 渲染
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+    // 標籤渲染
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.domElement.style.position = "absolute";
+    labelRenderer.domElement.style.pointerEvents = "none";
+    labelRenderer.domElement.style.top = "0px";
+    document.body.appendChild(labelRenderer.domElement);
+    const controls = new OrbitControls( camera, renderer.domElement );
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+    loader.setDRACOLoader( dracoLoader );
+    loader.load(
+        './models/Profile.glb',
+        function ( gltf ) {
+            console.log(gltf.scene);
+            scene.add(gltf.scene);
+            // threejs
+            const threejsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const threejstexture = new THREE.TextureLoader().load('./img/three.png');
+            const threejsmaterial = new THREE.MeshStandardMaterial( { map: threejstexture } );
+            const threejs = new THREE.Mesh( threejsgeometry, threejsmaterial );
+            gltf.scene.children[0].add(threejs);
+            threejs.position.set(0,0,0);
+            // threejs標籤
+            const threejsDIV = document.createElement('a');
+            threejsDIV.href = 'Three-page.html';
+            threejsDIV.className = 'label';
+            threejsDIV.textContent = 'Three.js and Blender';
+            const threejsLabel = new CSS2DObject(threejsDIV);
+            threejsLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[0].add(threejsLabel);
+            threejsDIV.style.pointerEvents = 'auto';
+            // js
+            const jsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const jstexture = new THREE.TextureLoader().load('./img/javascript.png');
+            const jsmaterial = new THREE.MeshStandardMaterial( { map: jstexture } );
+            const js = new THREE.Mesh( jsgeometry, jsmaterial );
+            gltf.scene.children[1].add(js);
+            threejs.position.set(0,0,0);
+            // js標籤
+            const jsDIV = document.createElement('a');
+            jsDIV.href = 'JS-page.html';
+            jsDIV.className = 'label';
+            jsDIV.textContent = 'JavaScript';
+            const jsLabel = new CSS2DObject(jsDIV);
+            jsLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[1].add(jsLabel);
+            jsDIV.style.pointerEvents = 'auto';
+            // CSS
+            const cssgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const csstexture = new THREE.TextureLoader().load('./img/css.png');
+            const cssmaterial = new THREE.MeshStandardMaterial( { map: csstexture } );
+            const css = new THREE.Mesh( cssgeometry, cssmaterial );
+            gltf.scene.children[2].add(css);
+            threejs.position.set(0,0,0);
+            // CSS標籤
+            const cssDIV = document.createElement('a');
+            cssDIV.href = 'CSS-page.html';
+            cssDIV.className = 'label';
+            cssDIV.textContent = 'CSS/RWD';
+            const cssLabel = new CSS2DObject(cssDIV);
+            cssLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[2].add(cssLabel);
+            cssDIV.style.pointerEvents = 'auto';
+        },
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        function ( error ) {
+            console.log( 'An error happened' );
+        }
+    );
+    window.addEventListener('resize', resetSetting);
+    function resetSetting() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            }
+
+    function animate() {
+        requestAnimationFrame( animate );
+        scene.rotation.y += 0.0005;
+        renderer.render( scene, camera );
+        labelRenderer.render(scene, camera);
+    }
+
+    animate();
+
+    </script>
 </body>
 </html>
