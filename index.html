@@ -34,9 +34,90 @@
         border: 2px solid rgb(255, 255, 255);
         color: #608cb178;
     }
+    .loadingCalc {
+        font-weight: bold;
+    }
+
+    .loadingCalcName {
+        font-weight: bold;
+
+    }
+    .loading {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #608cb1;
+	z-index: 10;
+	opacity: 1;
+    }
+	.loadingbox {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+    }
+    .loadingCalcBox {
+        font-size: 48px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 100px;
+        font-weight: bold;
+    }
+    .loadingBar {
+        width: 306px;
+        height: 36px;
+        border: 3px solid rgb(73, 67, 67);
+        border-radius: 5px;
+        margin: auto;
+    }
+    .loadingBarColor {
+        width: 0px;
+        height: 30px;
+        background-color: #F9DC5C;
+        border-radius: 2px;
+
+    }
+@media (max-width: 1025px) {
+			.loadingCalcBox {
+				font-size: 32px;
+			}
+}
+
+@media (max-width: 376px) {
+			.loadingCalcBox {
+				font-size: 24px;
+            }
+            .loadingBar {
+                width: 250px;
+
+            }
+
+			
+}
+.hide {
+	visibility: hidden
+}
     </style>
 </head>
 <body>
+    <div class="loading">
+        <div class="loadingbox">
+            <div class="loadingCalcBox">
+                <span class="loadingCalcName">載入中</span>
+                <div class="loadingBar">
+                <div class="loadingBarColor"></div>
+                </div>
+                <div class="loadingCalc">0 %</div>
+            </div>
+            </div>
+        </div>
     <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
     <script type="importmap">
@@ -151,7 +232,26 @@
             cssDIV.style.pointerEvents = 'auto';
         },
         function ( xhr ) {
-            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+            const loading = document.querySelector('.loading');
+            const loadingCalc = document.querySelector('.loadingCalc');
+            const loadingCalcName = document.querySelector('.loadingCalcName');
+            const loadingBarColor = document.querySelector('.loadingBarColor');
+            var number = (xhr.loaded / xhr.total * 100).toFixed(0);
+            loadingCalc.textContent = number + '%';
+            loadingBarColor.style.width = number + '%';
+            if (number == 100.0) {
+            loadingCalcName.textContent = '載入完成';
+            loadingCalcName.style.color = 'lightgreen';
+            loadingCalc.style.color = 'lightgreen';
+            let timeRun = 1;
+            let timerA = setInterval(function () {
+                timeRun--;
+                if (timeRun <= 0) {
+                clearTimeout(timerA);
+                loading.classList.add('hide');
+                }
+            }, 1000);
+        }
         },
         function ( error ) {
             console.log( 'An error happened' );
