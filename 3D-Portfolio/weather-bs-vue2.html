@@ -39,10 +39,10 @@
                                 <div class="card bg-info mb-2">
                                     <h2 class="m-auto">{{data.location[item].locationName}}</h2>
                                     <div class="m-auto" v-if="data.location[item].weatherElement[0].time[0].parameter.parameterValue < 10">
-                                        <img :src=`https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/0${data.location[item].weatherElement[0].time[0].parameter.parameterValue}.svg` class="card-img-top" style="width: 80px;height: 80px;" alt="">
+                                        <img :src=`https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/0${data.location[item].weatherElement[0].time[0].parameter.parameterValue}.svg` class="card-img-top" style="width: 80px;height: 80px;" alt="">
                                     </div>
                                     <div class="m-auto" v-else="data.location[item].weatherElement[0].time[0].parameter.parameterValue >= 10">
-                                        <img :src=`https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${data.location[item].weatherElement[0].time[0].parameter.parameterValue}.svg` class="card-img-top" style="width: 80px;height: 80px;"  alt="">
+                                        <img :src=`https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${data.location[item].weatherElement[0].time[0].parameter.parameterValue}.svg` class="card-img-top" style="width: 80px;height: 80px;"  alt="">
                                     </div>
                                     <div class="card-body  ">
                                         <h5>{{data.location[item].weatherElement[0].time[0].parameter.parameterName}}</h5>
@@ -84,7 +84,7 @@
             },
             methods: {
                 getRendomUser(){
-                    let url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-896CB461-1D64-4B00-95C8-3A5369CAB8BF';
+                    let url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-896CB461-1D64-4B00-95C8-3A5369CAB8BF';
                     fetch(url)
                     .then(function (response) {
                         return response.json();

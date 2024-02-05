@@ -1,279 +1,294 @@
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<!-- 
+THEME: Phantom - Bootstrap Portfolio Template
+VERSION: 1.0.0
+AUTHOR: Themefisher
+
+HOMEPAGE: https://themefisher.com/products/phantom-best-bootstrap-portfolio-template/
+DEMO: https://demo.themefisher.com/phantom/
+GITHUB: https://github.com/themefisher/Phantom-Bootstrap-Portfolio-Template
+
+WEBSITE: https://themefisher.com
+TWITTER: https://twitter.com/themefisher
+FACEBOOK: https://www.facebook.com/themefisher
+-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
-    * {
-        box-sizing: border-box;
-    }   
-    body {
-    margin: 0px;
-    padding: 0px;
-    }
-    li {
-            list-style: none;
-    }
-    a {
-        text-decoration: none;
-        color: #ffffff;
-    }
-    .label {
-	padding: 5px;
-	font-size: 36px;
-	background-color: #608cb178;
-	border: 2px solid #F9DC5C;
-	color: rgb(255, 255, 255);
-	border-radius: 5px;
-	cursor: pointer;
-    }
 
-    .label:hover {
-        background-color: #F9DC5C;
-        border: 2px solid rgb(255, 255, 255);
-        color: #608cb178;
-    }
-    .loadingCalc {
-        font-weight: bold;
-    }
+  <!-- ** Basic Page Needs ** -->
+  <meta charset="utf-8">
+  <title>Di Han Liu | Portfolio</title>
 
-    .loadingCalcName {
-        font-weight: bold;
+  <!-- ** Mobile Specific Metas ** -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Portfolio HTML Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Html5 Portfolio Template v1.0">
+  
+  <!-- theme meta -->
+  <meta name="theme-name" content="phantom" />
 
-    }
-    .loading {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #608cb1;
-	z-index: 10;
-	opacity: 1;
-    }
-	.loadingbox {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-    }
-    .loadingCalcBox {
-        font-size: 48px;
-        color: #ffffff;
-        text-align: center;
-        line-height: 100px;
-        font-weight: bold;
-    }
-    .loadingBar {
-        width: 306px;
-        height: 36px;
-        border: 3px solid rgb(73, 67, 67);
-        border-radius: 5px;
-        margin: auto;
-    }
-    .loadingBarColor {
-        width: 0px;
-        height: 30px;
-        background-color: #F9DC5C;
-        border-radius: 2px;
+  <!-- Essential Stylesheets -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Open+Sans:400,600,700,800">
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/animate.css">
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="plugins/themefisher-fonts/css/themefisher-fonts.min.css">  
 
-    }
-@media (max-width: 1025px) {
-			.loadingCalcBox {
-				font-size: 32px;
-			}
-}
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Theme Stylesheet -->
+  <link rel="stylesheet" href="#" id="color-changer">
+  
+  <!--Favicon-->
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-@media (max-width: 376px) {
-			.loadingCalcBox {
-				font-size: 24px;
-            }
-            .loadingBar {
-                width: 250px;
-
-            }
-
-			
-}
-.hide {
-	visibility: hidden
-}
-    </style>
 </head>
-<body>
-    <div class="loading">
-        <div class="loadingbox">
-            <div class="loadingCalcBox">
-                <span class="loadingCalcName">載入中</span>
-                <div class="loadingBar">
-                <div class="loadingBarColor"></div>
+<body><!-- set class="dark" on body tag for DARK-THEME -->
+
+  <div class="preloader">
+    <div class="loading-mask"></div>
+    <div class="loading-mask"></div>
+    <div class="loading-mask"></div>
+    <div class="loading-mask"></div>
+    <div class="loading-mask"></div>
+  </div>
+
+  <div class="preview-wrapper">
+    <div class="switcher-head">
+      <span>Style Switcher</span>
+      <div class="switcher-trigger tf-tools"></div>
+    </div>
+
+    <div class="switcher-body">
+      <h4>Choose Color:</h4>
+      <ul class="color-options list-none">
+        <li class="c0" data-color="blue" title="Default">Default</li>
+        <li class="c1" data-color="red" title="Red">Red</li>
+        <li class="c2" data-color="green" title="Green">Green</li>
+        <li class="c3" data-color="yellow" title="Yellow">Yellow</li>
+      </ul>
+    </div>
+  </div>
+
+<main class="site-wrapper">
+  <div class="pt-table">
+    <div class="pt-tablecell page-home relative" style="background-image: url('images/banner.jpg');">
+      <div class="overlay"></div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+            <!-- <div class="page-title home text-center">
+              <p>這是</p>
+              <p>A product designer from England, who focuses on interactive design &amp; A freelance designer focusing on typography &amp; clean interfaces. Also works in Google.</p>
+            </div> -->
+
+            <div class="hexagon-menu clear">
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
                 </div>
-                <div class="loadingCalc">0 %</div>
-            </div>
-            </div>
-        </div>
-    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="about.html" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-profile-male"></i>
+                    </span>
+                    <span class="title">關於我</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                      fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="skill.html" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-tools-2"></i>
+                    </span>
+                    <span class="title">技能</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
 
-    <script type="importmap">
-        {
-        "imports": {
-        "three": "https://unpkg.com/three@latest/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@latest/examples/jsm/"
-        }
-        }
-    </script>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="works.html" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-briefcase2"></i>
+                    </span>
+                    <span class="title">專案作品</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="resume.html" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-tools"></i>
+                    </span>
+                    <span class="title">學經歷</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="https://github.com/dihan188/dihan188.github.io" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-ion-social-github"></i>
+                    </span>
+                    <span class="title">GITHUB</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="https://sketchfab.com/dihan188" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-ion-cube"></i>
+                    </span>
+                    <span class="title">sketchfab</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="hexagon-item">
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="hex-item">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <a href="contact.html" class="hex-content">
+                  <span class="hex-content-inner">
+                    <span class="icon">
+                      <i class="tf-envelope2"></i>
+                    </span>
+                    <span class="title">聯繫方式</span>
+                  </span>
+                  <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path>
+                  </svg>
+                </a>
+              </div>
+            </div> <!-- /.hexagon-menu -->
 
-    <script script type="module">
+          </div> <!-- /.col-xs-12 -->
 
-    // 引入three.js
-    import * as THREE from 'three';
-    // 引入three.js附加功能
-    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-    import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-    const scene = new THREE.Scene();
-    const color = new THREE.Color('gray');
-    scene.background = color;    
-    const light = new THREE.AmbientLight( 0x404040,30 );
-    scene.add( light );
-    const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
-    camera.position.set(-1.5, 0, 4);
-    // 渲染
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
-    // 標籤渲染
-    const labelRenderer = new CSS2DRenderer();
-    labelRenderer.setSize(window.innerWidth, window.innerHeight);
-    labelRenderer.domElement.style.position = "absolute";
-    labelRenderer.domElement.style.pointerEvents = "none";
-    labelRenderer.domElement.style.top = "0px";
-    document.body.appendChild(labelRenderer.domElement);
-    const controls = new OrbitControls( camera, renderer.domElement );
-    const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
-    loader.setDRACOLoader( dracoLoader );
-    loader.load(
-        './models/Profile.glb',
-        function ( gltf ) {
-            console.log(gltf.scene);
-            scene.add(gltf.scene);
-            // 8th
-            const floorgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
-            const floortexture = new THREE.TextureLoader().load('./img/8th.png');
-            const floormaterial = new THREE.MeshStandardMaterial( { map: floortexture } );
-            const floor = new THREE.Mesh( floorgeometry, floormaterial );
-            gltf.scene.children[3].add(floor);
-            floor.position.set(0,0,0);
-            // 8th標籤
-            const floorDIV = document.createElement('a');
-            floorDIV.href = 'https://112-07-nchu-blender3d.dev-hub.io/index.html';
-            floorDIV.className = 'label';
-            floorDIV.textContent = '中興大學綜合教學大樓八樓導覽';
-            const floorLabel = new CSS2DObject(floorDIV);
-            floorLabel.position.set(0, 1.5, 0);
-            gltf.scene.children[3].add(floorLabel);
-            floorDIV.style.pointerEvents = 'auto';
-            // threejs
-            const threejsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
-            const threejstexture = new THREE.TextureLoader().load('./img/three.png');
-            const threejsmaterial = new THREE.MeshStandardMaterial( { map: threejstexture } );
-            const threejs = new THREE.Mesh( threejsgeometry, threejsmaterial );
-            gltf.scene.children[0].add(threejs);
-            threejs.position.set(0,0,0);
-            // threejs標籤
-            const threejsDIV = document.createElement('a');
-            threejsDIV.href = 'Three-page.html';
-            threejsDIV.className = 'label';
-            threejsDIV.textContent = 'Three.js and Blender';
-            const threejsLabel = new CSS2DObject(threejsDIV);
-            threejsLabel.position.set(0, 1.5, 0);
-            gltf.scene.children[0].add(threejsLabel);
-            threejsDIV.style.pointerEvents = 'auto';
-            // js
-            const jsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
-            const jstexture = new THREE.TextureLoader().load('./img/javascript.png');
-            const jsmaterial = new THREE.MeshStandardMaterial( { map: jstexture } );
-            const js = new THREE.Mesh( jsgeometry, jsmaterial );
-            gltf.scene.children[1].add(js);
-            threejs.position.set(0,0,0);
-            // js標籤
-            const jsDIV = document.createElement('a');
-            jsDIV.href = 'JS-page.html';
-            jsDIV.className = 'label';
-            jsDIV.textContent = 'JavaScript';
-            const jsLabel = new CSS2DObject(jsDIV);
-            jsLabel.position.set(0, 1.5, 0);
-            gltf.scene.children[1].add(jsLabel);
-            jsDIV.style.pointerEvents = 'auto';
-            // CSS
-            const cssgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
-            const csstexture = new THREE.TextureLoader().load('./img/css.png');
-            const cssmaterial = new THREE.MeshStandardMaterial( { map: csstexture } );
-            const css = new THREE.Mesh( cssgeometry, cssmaterial );
-            gltf.scene.children[2].add(css);
-            threejs.position.set(0,0,0);
-            // CSS標籤
-            const cssDIV = document.createElement('a');
-            cssDIV.href = 'CSS-page.html';
-            cssDIV.className = 'label';
-            cssDIV.textContent = 'CSS/RWD';
-            const cssLabel = new CSS2DObject(cssDIV);
-            cssLabel.position.set(0, 1.5, 0);
-            gltf.scene.children[2].add(cssLabel);
-            cssDIV.style.pointerEvents = 'auto';
-        },
-        function ( xhr ) {
-            const loading = document.querySelector('.loading');
-            const loadingCalc = document.querySelector('.loadingCalc');
-            const loadingCalcName = document.querySelector('.loadingCalcName');
-            const loadingBarColor = document.querySelector('.loadingBarColor');
-            var number = (xhr.loaded / xhr.total * 100).toFixed(0);
-            loadingCalc.textContent = number + '%';
-            loadingBarColor.style.width = number + '%';
-            if (number == 100.0) {
-            loadingCalcName.textContent = '載入完成';
-            loadingCalcName.style.color = 'lightgreen';
-            loadingCalc.style.color = 'lightgreen';
-            let timeRun = 1;
-            let timerA = setInterval(function () {
-                timeRun--;
-                if (timeRun <= 0) {
-                clearTimeout(timerA);
-                loading.classList.add('hide');
-                }
-            }, 1000);
-        }
-        },
-        function ( error ) {
-            console.log( 'An error happened' );
-        }
-    );
-    window.addEventListener('resize', resetSetting);
-    function resetSetting() {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            labelRenderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            }
+        </div> <!-- /.row -->
+      </div> <!-- /.container -->
 
-    function animate() {
-        requestAnimationFrame( animate );
-        scene.rotation.y += 0.0005;
-        renderer.render( scene, camera );
-        labelRenderer.render(scene, camera);
-    }
+    </div> <!-- /.pt-tablecell -->
+  </div> <!-- /.pt-table -->
+</main> <!-- /.site-wrapper -->
 
-    animate();
 
-    </script>
+<!-- 
+Essential Scripts
+=====================================-->
+<script src="plugins/jquery-2.2.4.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/jquery.nicescroll.min.js"></script>
+<script src="plugins/isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>

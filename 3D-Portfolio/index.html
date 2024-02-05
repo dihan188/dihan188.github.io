@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }   
+    body {
+    margin: 0px;
+    padding: 0px;
+    }
+    li {
+            list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .label {
+	padding: 5px;
+	font-size: 36px;
+	background-color: #608cb178;
+	border: 2px solid #F9DC5C;
+	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	cursor: pointer;
+    }
+
+    .label:hover {
+        background-color: #F9DC5C;
+        border: 2px solid rgb(255, 255, 255);
+        color: #608cb178;
+    }
+    .loadingCalc {
+        font-weight: bold;
+    }
+
+    .loadingCalcName {
+        font-weight: bold;
+
+    }
+    .loading {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #608cb1;
+	z-index: 10;
+	opacity: 1;
+    }
+	.loadingbox {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+    }
+    .loadingCalcBox {
+        font-size: 48px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 100px;
+        font-weight: bold;
+    }
+    .loadingBar {
+        width: 306px;
+        height: 36px;
+        border: 3px solid rgb(73, 67, 67);
+        border-radius: 5px;
+        margin: auto;
+    }
+    .loadingBarColor {
+        width: 0px;
+        height: 30px;
+        background-color: #F9DC5C;
+        border-radius: 2px;
+
+    }
+@media (max-width: 1025px) {
+			.loadingCalcBox {
+				font-size: 32px;
+			}
+}
+
+@media (max-width: 376px) {
+			.loadingCalcBox {
+				font-size: 24px;
+            }
+            .loadingBar {
+                width: 250px;
+
+            }
+
+			
+}
+.hide {
+	visibility: hidden
+}
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="loadingbox">
+            <div class="loadingCalcBox">
+                <span class="loadingCalcName">載入中</span>
+                <div class="loadingBar">
+                <div class="loadingBarColor"></div>
+                </div>
+                <div class="loadingCalc">0 %</div>
+            </div>
+            </div>
+        </div>
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+        "imports": {
+        "three": "https://unpkg.com/three@latest/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@latest/examples/jsm/"
+        }
+        }
+    </script>
+
+    <script script type="module">
+
+    // 引入three.js
+    import * as THREE from 'three';
+    // 引入three.js附加功能
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+    import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+    const scene = new THREE.Scene();
+    const color = new THREE.Color('gray');
+    scene.background = color;    
+    const light = new THREE.AmbientLight( 0x404040,30 );
+    scene.add( light );
+    const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+    camera.position.set(-1.5, 0, 4);
+    // 渲染
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+    // 標籤渲染
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.domElement.style.position = "absolute";
+    labelRenderer.domElement.style.pointerEvents = "none";
+    labelRenderer.domElement.style.top = "0px";
+    document.body.appendChild(labelRenderer.domElement);
+    const controls = new OrbitControls( camera, renderer.domElement );
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+    loader.setDRACOLoader( dracoLoader );
+    loader.load(
+        './models/Profile.glb',
+        function ( gltf ) {
+            console.log(gltf.scene);
+            scene.add(gltf.scene);
+            // 8th
+            const floorgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const floortexture = new THREE.TextureLoader().load('./img/8th.png');
+            const floormaterial = new THREE.MeshStandardMaterial( { map: floortexture } );
+            const floor = new THREE.Mesh( floorgeometry, floormaterial );
+            gltf.scene.children[3].add(floor);
+            floor.position.set(0,0,0);
+            // 8th標籤
+            const floorDIV = document.createElement('a');
+            floorDIV.href = 'https://112-07-nchu-blender3d.dev-hub.io/index.html';
+            floorDIV.className = 'label';
+            floorDIV.textContent = '中興大學綜合教學大樓八樓導覽';
+            const floorLabel = new CSS2DObject(floorDIV);
+            floorLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[3].add(floorLabel);
+            floorDIV.style.pointerEvents = 'auto';
+            // threejs
+            const threejsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const threejstexture = new THREE.TextureLoader().load('./img/three.png');
+            const threejsmaterial = new THREE.MeshStandardMaterial( { map: threejstexture } );
+            const threejs = new THREE.Mesh( threejsgeometry, threejsmaterial );
+            gltf.scene.children[0].add(threejs);
+            threejs.position.set(0,0,0);
+            // threejs標籤
+            const threejsDIV = document.createElement('a');
+            threejsDIV.href = 'Three-page.html';
+            threejsDIV.className = 'label';
+            threejsDIV.textContent = 'Three.js and Blender';
+            const threejsLabel = new CSS2DObject(threejsDIV);
+            threejsLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[0].add(threejsLabel);
+            threejsDIV.style.pointerEvents = 'auto';
+            // js
+            const jsgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const jstexture = new THREE.TextureLoader().load('./img/javascript.png');
+            const jsmaterial = new THREE.MeshStandardMaterial( { map: jstexture } );
+            const js = new THREE.Mesh( jsgeometry, jsmaterial );
+            gltf.scene.children[1].add(js);
+            threejs.position.set(0,0,0);
+            // js標籤
+            const jsDIV = document.createElement('a');
+            jsDIV.href = 'JS-page.html';
+            jsDIV.className = 'label';
+            jsDIV.textContent = 'JavaScript';
+            const jsLabel = new CSS2DObject(jsDIV);
+            jsLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[1].add(jsLabel);
+            jsDIV.style.pointerEvents = 'auto';
+            // CSS
+            const cssgeometry = new THREE.BoxGeometry( 3, 1.8, 1.8 );
+            const csstexture = new THREE.TextureLoader().load('./img/css.png');
+            const cssmaterial = new THREE.MeshStandardMaterial( { map: csstexture } );
+            const css = new THREE.Mesh( cssgeometry, cssmaterial );
+            gltf.scene.children[2].add(css);
+            threejs.position.set(0,0,0);
+            // CSS標籤
+            const cssDIV = document.createElement('a');
+            cssDIV.href = 'CSS-page.html';
+            cssDIV.className = 'label';
+            cssDIV.textContent = 'CSS/RWD';
+            const cssLabel = new CSS2DObject(cssDIV);
+            cssLabel.position.set(0, 1.5, 0);
+            gltf.scene.children[2].add(cssLabel);
+            cssDIV.style.pointerEvents = 'auto';
+        },
+        function ( xhr ) {
+            const loading = document.querySelector('.loading');
+            const loadingCalc = document.querySelector('.loadingCalc');
+            const loadingCalcName = document.querySelector('.loadingCalcName');
+            const loadingBarColor = document.querySelector('.loadingBarColor');
+            var number = (xhr.loaded / xhr.total * 100).toFixed(0);
+            loadingCalc.textContent = number + '%';
+            loadingBarColor.style.width = number + '%';
+            if (number == 100.0) {
+            loadingCalcName.textContent = '載入完成';
+            loadingCalcName.style.color = 'lightgreen';
+            loadingCalc.style.color = 'lightgreen';
+            let timeRun = 1;
+            let timerA = setInterval(function () {
+                timeRun--;
+                if (timeRun <= 0) {
+                clearTimeout(timerA);
+                loading.classList.add('hide');
+                }
+            }, 1000);
+        }
+        },
+        function ( error ) {
+            console.log( 'An error happened' );
+        }
+    );
+    window.addEventListener('resize', resetSetting);
+    function resetSetting() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            }
+
+    function animate() {
+        requestAnimationFrame( animate );
+        scene.rotation.y += 0.0005;
+        renderer.render( scene, camera );
+        labelRenderer.render(scene, camera);
+    }
+
+    animate();
+
+    </script>
+</body>
+</html>
