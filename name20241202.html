@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兩字組合生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            padding-bottom: 100px; /* 增加底部空白，避免按钮遮挡 */
+        }
+        h1 {
+            text-align: center;
+        }
+        #total-combinations {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .group {
+            margin: 20px 0;
+        }
+        .group h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .combinations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+        .combinations li {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        #generate-btn {
+            position: fixed;
+            bottom: 20px; /* 调整按钮距离底部的位置 */
+            left: 70%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        #generate-third-btn {
+            position: fixed;
+            bottom: 20px; /* 保持按钮在页面底部 */
+            left: 30%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 14x;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>兩字組合</h1>
+    <button id="generate-btn">第二字組合</button>
+    <button id="generate-third-btn">第三字組合</button>
+    <div id="total-combinations"></div>
+    <div id="combinations"></div>
+
+    <script>
+        // 提供的字
+        const chars = ['子', '予', '允', '希', '言', '沐', '旻', 
+            '政', '奕', '彥', '星', '炫', '玥', '晉', '晏', '桀', '珉', '軒',
+            '浩', '晨', '珞', '裴', '斯', '智', '竣',
+            '翔', '舒', '鈞', '揚','煜', '詩', 
+            '詮', '瑋', '碩','語',
+            '鋒', '霆', '勳','穎', '衡', '諾',
+            '霖', '澤', '謙','璿', '璽', '顥'];
+
+        // 特殊字符配置，包含需要跳过的字符及其跳过规则
+        const specialChars = {
+            '子': { skip: true, skipRule: 'second' }, // '子' 作为第二字时跳过
+            '裴': { skip: true, skipRule: 'second' }, // '裴' 作为第二字时跳过
+        };
+
+        let groups = {};
+        let totalCombinations = 0; // 用於計算總組合數量
+
+        // 檢查字符是否需要跳過
+        function shouldSkip(char, position) {
+            if (specialChars[char]) {
+                const rule = specialChars[char];
+                return rule.skip && rule.skipRule === position;
+            }
+            return false;
+        }
+
+        function generateCombinations() {
+            groups = {}; // 清空之前的組合
+            totalCombinations = 0; // 重置計數
+
+            for (let i = 0; i < chars.length; i++) {
+                let groupName = chars[i];
+                let combinations = [];
+                for (let j = 0; j < chars.length; j++) {
+                    if (i !== j) { // 確保不與自己組合
+                        if (!shouldSkip(chars[j], 'second')) {
+                            combinations.push("劉" + groupName + chars[j]);
+                            totalCombinations++; // 每生成一個組合，累加總數
+                        }
+                    }
+                }
+                groups[groupName] = combinations;
+            }
+
+            // 顯示總數
+            const totalContainer = document.getElementById("total-combinations");
+            totalContainer.innerHTML = `<h2>總共生成了 ${totalCombinations} 個組合</h2>`;
+
+            // 顯示組合
+            const container = document.getElementById("combinations");
+            container.innerHTML = ''; // 清空之前的顯示
+
+            for (let group in groups) {
+                const groupDiv = document.createElement("div");
+                groupDiv.classList.add("group");
+
+                const groupTitle = document.createElement("h2");
+                groupTitle.textContent = group + ' 組';
+                groupDiv.appendChild(groupTitle);
+
+                const ul = document.createElement("ul");
+                ul.classList.add("combinations");
+
+                groups[group].forEach(comb => {
+                    const li = document.createElement("li");
+                    li.textContent = comb;
+                    ul.appendChild(li);
+                });
+
+                groupDiv.appendChild(ul);
+                container.appendChild(groupDiv);
+            }
+        }
+
+        function generateCombinations_third() {
+            groups = {}; // 清空之前的組合
+            totalCombinations = 0; // 重置計數
+
+            for (let i = 0; i < chars.length; i++) {
+                let groupName = chars[i];
+                let combinations = [];
+                for (let j = 0; j < chars.length; j++) {
+                    if (i !== j) { // 確保不與自己組合
+                        combinations.push("劉" + chars[j] + groupName);
+                        totalCombinations++; // 每生成一個組合，累加總數
+                    }
+                }
+                groups[groupName] = combinations;
+            }
+
+            // 顯示總數
+            const totalContainer = document.getElementById("total-combinations");
+            totalContainer.innerHTML = `<h2>總共生成了 ${totalCombinations} 個組合</h2>`;
+
+            // 顯示組合
+            const container = document.getElementById("combinations");
+            container.innerHTML = ''; // 清空之前的顯示
+
+            for (let group in groups) {
+                const groupDiv = document.createElement("div");
+                groupDiv.classList.add("group");
+
+                const groupTitle = document.createElement("h2");
+                groupTitle.textContent = group + ' 組';
+                groupDiv.appendChild(groupTitle);
+
+                const ul = document.createElement("ul");
+                ul.classList.add("combinations");
+
+                groups[group].forEach(comb => {
+                    const li = document.createElement("li");
+                    li.textContent = comb;
+                    ul.appendChild(li);
+                });
+
+                groupDiv.appendChild(ul);
+                container.appendChild(groupDiv);
+            }
+        }
+
+        // 綁定按鈕點擊事件
+        const generateButton = document.getElementById("generate-btn");
+        generateButton.addEventListener("click", generateCombinations);
+
+        // 綁定按鈕點擊事件
+        const generateButton_third = document.getElementById("generate-third-btn");
+        generateButton_third.addEventListener("click", generateCombinations_third);
+
+    </script>
+
+</body>
+</html>
